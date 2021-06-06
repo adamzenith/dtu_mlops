@@ -84,8 +84,7 @@ class TrainOREvaluate(object):
             for images, labels in test_set:
                 ## TODO: Implement the validation pass and print out the validation accuracy
                 
-                log_ps = model(images)
-                loss = criterion(log_ps, labels)
+                
                 ps = torch.exp(model(images))
                 top_p, top_class = ps.topk(1, dim=1)
                 equals = top_class == labels.view(*top_class.shape)

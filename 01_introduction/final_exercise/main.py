@@ -81,7 +81,7 @@ class TrainOREvaluate(object):
         accuracies=[]
         with torch.no_grad(): 
             model.eval()  
-            for images, labels in test_set:
+            for images, labels in tqdm(test_set):
                 ## TODO: Implement the validation pass and print out the validation accuracy
                 
                 

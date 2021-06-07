@@ -10,7 +10,7 @@ from tqdm import tqdm
 import os
 print("Training day and night")
 parser = argparse.ArgumentParser(description='Training arguments')
-parser.add_argument('--lr', default=0.1,type=float)
+parser.add_argument('--lr', default=0.002,type=float)
 parser.add_argument('--epochs',default=10,type=int)
 # add any additional argument that you want
 args = parser.parse_args()
@@ -20,7 +20,7 @@ os.chdir(dir_path)
 # TODO: Implement training loop here
 
 model = MyAwesomeModel()
-train_set=torch.load(r'..\..\data\processed\train.pt')
+train_set=torch.load(r'..\..\data\processed\train_FMNIST.pt')
 
 #train_set = torch.utils.data.DataLoader(trainset, batch_size=64, shuffle=True)
 

@@ -18,8 +18,8 @@ os.chdir(dir_path)
 ## Load specified pretrained model
 model = MyAwesomeModel()
 parser = argparse.ArgumentParser(description='Training arguments')
-parser.add_argument('--load_model_from', default="../../models/checkpoint_lr0.002_epochs20.pth")
-parser.add_argument('--load_data_from', default="../../data/processed/test.pt")
+parser.add_argument('--load_model_from', default="../../models/checkpoint_lr0.002_epochs10.pth")# DEFAULT CHECKPOINT HERE
+parser.add_argument('--load_data_from', default="../../data/processed/test.pt")#DATASET HERE
 args = parser.parse_args()
 print("Visualizing the features from " + args.load_model_from + " model on " + args.load_data_from + " data")
 print("------------------")

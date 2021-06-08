@@ -12,14 +12,14 @@ class MyAwesomeModel(nn.Module):
 
         self.dropout = nn.Dropout(p=0.2)
 
-    def forward(self, x, retur=False):
+    def forward(self, x, features=False):
         # make sure input tensor is flattened
         x = x.view(x.shape[0], -1)
 
         x = self.dropout(F.relu(self.fc1(x)))
         x = self.dropout(F.relu(self.fc2(x)))
         x = self.dropout(F.relu(self.fc3(x)))
-        if retur:
+        if features:
             return x
         x = F.log_softmax(self.fc4(x), dim=1)
 

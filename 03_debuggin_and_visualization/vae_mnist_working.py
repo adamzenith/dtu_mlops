@@ -6,12 +6,14 @@ A simple implementation of Gaussian MLP Encoder and Decoder trained on MNIST
 """
 import torch
 import torch.nn as nn
+import torchvision
 from torchvision.utils import save_image
 from torchvision.datasets import MNIST
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader
+from torch.utils.tensorboard import SummaryWriter
 
-
+writer = SummaryWriter()
 # Model Hyperparameters
 dataset_path = "~/datasets"
 cuda = False
@@ -116,19 +118,27 @@ optimizer = Adam(model.parameters(), lr=lr)
 
 print("Start training VAE...")
 model.train()
+train_loader=torch.load("trainloader.pt")
 for epoch in range(epochs):
     overall_loss = 0
     for batch_idx, (x, _) in enumerate(train_loader):
         x = x.view(batch_size, x_dim)
         x = x.to(DEVICE)
 
+        # grid = torchvision.utils.make_grid(x)
+        # writer.add_image('images', grid, 0)
+        # writer.add_graph(model, x)
+        # writer.close()
+
         optimizer.zero_grad()
 
         x_hat, mean, log_var = model(x)
         loss = loss_function(x, x_hat, mean, log_var)
-
+        
         overall_loss += loss.item()
-
+        #writer.add_scalar("loss",overall_loss,batch_idx)
+        #writer.add_histogram()
+        #writer.add_graph("loss also",plt.plot(overall_loss))
         loss.backward()
         optimizer.step()
     print(
@@ -142,6 +152,7 @@ print("Finish!!")
 
 # Generate reconstructions
 model.eval()
+test_loader=torch.load("testloader.pt")
 with torch.no_grad():
     for batch_idx, (x, _) in enumerate(test_loader):
         x = x.view(batch_size, x_dim)
@@ -158,3 +169,6 @@ with torch.no_grad():
     generated_images = decoder(noise)
 
 save_image(generated_images.view(batch_size, 1, 28, 28), "generated_sample.png")
+
+# writer.add_image("image/orig",x.view(1, 1, 28, 28))
+# writer.add_image("image/reconstructed",x_hat.view(1, 1, 28, 28))

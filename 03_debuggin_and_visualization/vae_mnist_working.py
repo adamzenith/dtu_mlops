@@ -28,10 +28,10 @@ epochs = 5
 mnist_transform = transforms.Compose([transforms.ToTensor()])
 
 train_dataset = MNIST(
-    dataset_path, transform=mnist_transform, train=True, download=True
+    dataset_path, transform=mnist_transform, train=True
 )
 test_dataset = MNIST(
-    dataset_path, transform=mnist_transform, train=False, download=True
+    dataset_path, transform=mnist_transform, train=False
 )
 
 train_loader = DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=True)
@@ -119,7 +119,7 @@ model.train()
 for epoch in range(epochs):
     overall_loss = 0
     for batch_idx, (x, _) in enumerate(train_loader):
-        #x = x.view(batch_size, x_dim)
+        x = x.view(batch_size, x_dim)
         x = x.to(DEVICE)
 
         optimizer.zero_grad()

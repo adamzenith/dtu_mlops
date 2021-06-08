@@ -11,13 +11,13 @@ from PIL import Image
 import os
 from torchvision import transforms
 
-# dir_path = os.path.dirname(os.path.realpath(__file__))
-# os.chdir(dir_path)
+dir_path = os.path.dirname(os.path.realpath(__file__))
+os.chdir(dir_path)
 
 
 parser = argparse.ArgumentParser(description="Training arguments")
-parser.add_argument("--load_model_from", default="")
-parser.add_argument("--file", default="")
+parser.add_argument("--load_model_from", default=r"..\..\models\checkpoint_lr0.002_epochs10.pth")
+parser.add_argument("--file", default=r"..\..\data\raw\00000.jpg")
 # add any additional argument that you want
 args = parser.parse_args()
 

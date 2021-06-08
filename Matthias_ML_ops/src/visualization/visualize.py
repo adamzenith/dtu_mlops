@@ -10,7 +10,7 @@ from sklearn.manifold import TSNE
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import numpy as np
-
+from IPython import embed
 #Change directory
 dir_path = os.path.dirname(os.path.realpath(__file__))
 os.chdir(dir_path)
@@ -19,7 +19,7 @@ os.chdir(dir_path)
 model = MyAwesomeModel()
 parser = argparse.ArgumentParser(description='Training arguments')
 parser.add_argument('--load_model_from', default="../../models/checkpoint_lr0.002_epochs10.pth")# DEFAULT CHECKPOINT HERE
-parser.add_argument('--load_data_from', default="../../data/processed/test.pt")#DATASET HERE
+parser.add_argument('--load_data_from', default="../../data/processed/test_FMNIST.pt")#DATASET HERE
 args = parser.parse_args()
 print("Visualizing the features from " + args.load_model_from + " model on " + args.load_data_from + " data")
 print("------------------")
@@ -32,6 +32,7 @@ model.eval()
 
 predictions = torch.empty((64, 64))
 labels = torch.empty((64))
+embed()
 
 
 ## note that we chose to plot only 10 images

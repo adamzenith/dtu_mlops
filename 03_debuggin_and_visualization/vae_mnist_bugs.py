@@ -58,8 +58,8 @@ class Encoder(nn.Module):
         return z, mean, log_var
 
     def reparameterization(self, mean, var):
-        epsilon = torch.randn(*var.shape)
-
+        #epsilon = torch.randn(*var.shape)
+        epsilon = torch.rand_like(var)   
         z = mean + torch.exp(var/2) * epsilon
 
         return z

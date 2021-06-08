@@ -14,7 +14,7 @@ from torch.utils.data import DataLoader
 
 # Model Hyperparameters
 dataset_path = "~/datasets"
-cuda = True
+cuda = False
 DEVICE = torch.device("cuda" if cuda else "cpu")
 batch_size = 100
 x_dim = 784
@@ -119,7 +119,7 @@ model.train()
 for epoch in range(epochs):
     overall_loss = 0
     for batch_idx, (x, _) in enumerate(train_loader):
-        x = x.view(batch_size, x_dim)
+        #x = x.view(batch_size, x_dim)
         x = x.to(DEVICE)
 
         optimizer.zero_grad()

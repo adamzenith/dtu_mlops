@@ -28,9 +28,9 @@ def create_MNIST():
         train=True,
         transform=transform,
     )
-    print(trainset[0][0].shape)
+    
     trainloader = torch.utils.data.DataLoader(trainset, batch_size=64, shuffle=True)
-
+    
     torch.save(trainloader, r"..\..\data\processed\train.pt")
 
     # Download and load the test data
@@ -40,7 +40,7 @@ def create_MNIST():
         train=False,
         transform=transform,
     )
-
+    
     testloader = torch.utils.data.DataLoader(testset, batch_size=64, shuffle=True)
     torch.save(testloader, r"..\..\data\processed\test.pt")
 
@@ -55,7 +55,7 @@ def create_MNIST():
 
     logger = logging.getLogger(__name__)
     logger.info("making final data set from raw data")
-    return testset, trainset
+    return testset,trainset
 
 
 if __name__ == "__main__":

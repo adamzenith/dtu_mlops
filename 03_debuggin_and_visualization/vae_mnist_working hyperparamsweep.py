@@ -21,16 +21,24 @@ from IPython import embed
 dataset_path = "~/datasets"
 cuda = False
 DEVICE = torch.device("cuda" if cuda else "cpu")
-batch_size = 100
-x_dim = 784
-hidden_dim = 400
-hidden_dim2 = 100
-latent_dim = 20
-lr = 1e-3
+
 epochs = 20
+x_dim = 784
+hyperparameter_defaults = dict(
+    batch_size = 100,
+    hidden_dim = 400,
+    hidden_dim2 = 100,
+    latent_dim = 20,
+    lr = 1e-3
+    )
 
 # Pass your defaults to wandb.init
-wandb.init()
+wandb.init(config=hyperparameter_defaults)
+# Access all hyperparameter values through wandb.config
+config = wandb.config
+
+# Set up your model
+model = make_model(config)
 
 
 # Data loading

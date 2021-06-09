@@ -1,0 +1,22 @@
+{
+    "os": "Windows-10-10.0.19042-SP0",
+    "python": "3.9.5",
+    "heartbeatAt": "2021-06-08T18:08:03.275347",
+    "startedAt": "2021-06-08T18:08:00.573100",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "c:\\Users\\matth\\Documents\\GitHub\\dtu_mlops\\03_debuggin_and_visualization\\vae_mnist_working.py",
+    "codePath": "03_debuggin_and_visualization\\vae_mnist_working.py",
+    "git": {
+        "remote": "https://github.com/adamzenith/dtu_mlops.git",
+        "commit": "a3cb9d1c904605af562a69e5d4c72115b3506501"
+    },
+    "email": "49098682+adamzenith@users.noreply.github.com",
+    "root": "C:/Users/matth/Documents/GitHub/dtu_mlops",
+    "host": "Matthias",
+    "username": "matth",
+    "executable": "C:\\Users\\matth\\Documents\\GitHub\\dtu_mlops\\Mlops\\Scripts\\python.exe"
+}

@@ -35,7 +35,7 @@ def main():
 
     # Download and load the test data
     testset = datasets.FashionMNIST(
-        r"..\..\data\raw\MNIST_data",
+        r"..\..\data\raw\FMNIST_data",
         download=True,
         train=False,
         transform=transform,

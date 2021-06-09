@@ -11,8 +11,9 @@ from tqdm import tqdm
 import torchvision
 from IPython import embed
 import os
-from torch.utils.tensorboard import SummaryWriter
-
+import wandb
+#from torch.utils.tensorboard import SummaryWriter
+wandb.init()
 print("Training day and night")
 parser = argparse.ArgumentParser(description='Training arguments')
 parser.add_argument('--lr', default=0.002,type=float)
@@ -22,7 +23,7 @@ args = parser.parse_args()
 print(args)
 dir_path = os.path.dirname(os.path.realpath(__file__))
 os.chdir(dir_path)
-writer = SummaryWriter(log_dir = dir_path+"/runs")
+#writer = SummaryWriter(log_dir = dir_path+"/runs")
 # TODO: Implement training loop here
 
 model = MyAwesomeModel()
@@ -36,6 +37,7 @@ def moving_average(x, w):
     return np.convolve(x, np.ones(w), 'valid') / w
 
 print("starting")
+wandb.watch(model)
 model.train()
 
 j=0
@@ -52,15 +54,15 @@ for e in (tqdm(range(args.epochs),leave=False)):
         loss = criterion(log_ps, labels)
         loss.backward()
         optimizer.step()
+        wandb.log({"loss": loss})
         Loss.append(loss.item())
         ps = torch.exp(model(images))
         top_p, top_class = ps.topk(1, dim=1)
-        writer.add_scalar("Test",loss.item(),i)
-    writer.add_histogram("Hest",np.array(Loss),j)
+        
 
         
     
-writer.close()
+
 import matplotlib.pyplot as plt
 import numpy as np
 

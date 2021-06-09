@@ -23,6 +23,7 @@ lr = 1e-3
 epochs = 1
 
 
+
 # Data loading
 mnist_transform = transforms.Compose([transforms.ToTensor()])
 

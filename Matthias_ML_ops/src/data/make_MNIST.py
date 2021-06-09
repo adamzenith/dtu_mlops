@@ -8,7 +8,7 @@ import os
 # @click.command()
 # @click.argument('input_filepath', type=click.Path(exists=True))
 # @click.argument('output_filepath', type=click.Path())
-def main():
+def create_MNIST():
     # exchange with the real mnist dataset
 
     import torch
@@ -28,7 +28,7 @@ def main():
         train=True,
         transform=transform,
     )
-
+    print(trainset[0][0].shape)
     trainloader = torch.utils.data.DataLoader(trainset, batch_size=64, shuffle=True)
 
     torch.save(trainloader, r"..\..\data\processed\train.pt")
@@ -40,7 +40,7 @@ def main():
         train=False,
         transform=transform,
     )
-    
+
     testloader = torch.utils.data.DataLoader(testset, batch_size=64, shuffle=True)
     torch.save(testloader, r"..\..\data\processed\test.pt")
 
@@ -55,6 +55,7 @@ def main():
 
     logger = logging.getLogger(__name__)
     logger.info("making final data set from raw data")
+    return testset, trainset
 
 
 if __name__ == "__main__":
@@ -68,4 +69,4 @@ if __name__ == "__main__":
     # load up the .env entries as environment variables
     load_dotenv(find_dotenv())
 
-    main()
+    create_MNIST()

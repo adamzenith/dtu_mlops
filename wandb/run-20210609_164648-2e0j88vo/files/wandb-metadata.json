@@ -1,0 +1,22 @@
+{
+    "os": "Windows-10-10.0.19042-SP0",
+    "python": "3.9.5",
+    "heartbeatAt": "2021-06-09T14:46:59.391654",
+    "startedAt": "2021-06-09T14:46:48.910096",
+    "docker": null,
+    "cpu_count": 8,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "C:\\Users\\matth\\Documents\\GitHub\\dtu_mlops\\Matthias_ML_ops\\src\\models\\train_model.py",
+    "codePath": "Matthias_ML_ops\\src\\models\\train_model.py",
+    "git": {
+        "remote": "https://github.com/adamzenith/dtu_mlops.git",
+        "commit": "f81efb8e4f4fd6403ee43ddaf026fa50a937b488"
+    },
+    "email": "49098682+adamzenith@users.noreply.github.com",
+    "root": "C:/Users/matth/Documents/GitHub/dtu_mlops",
+    "host": "Matthias",
+    "username": "matth",
+    "executable": "C:\\Users\\matth\\Documents\\GitHub\\dtu_mlops\\Mlops\\Scripts\\python.exe"
+}

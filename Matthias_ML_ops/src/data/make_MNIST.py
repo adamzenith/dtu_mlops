@@ -5,18 +5,18 @@ from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
 import os
 
+
 # @click.command()
 # @click.argument('input_filepath', type=click.Path(exists=True))
 # @click.argument('output_filepath', type=click.Path())
 def create_MNIST():
     # exchange with the real mnist dataset
-
     import torch
     from torchvision import datasets, transforms
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
     os.chdir(dir_path)
-
+    embed()
     # Define a transform to normalize the data
     transform = transforms.Compose(
         [transforms.ToTensor(), transforms.Normalize((0.5,), (0.5,))]
